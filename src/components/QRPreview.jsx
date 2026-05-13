@@ -58,7 +58,10 @@ function QRPreview({ config }) {
 
     return (
         <div className="bg-white p-6 rounded-2xl shadow-lg">
-            <div ref={qrRef}></div>
+            <div
+                ref={qrRef}
+                className="w-[300px] h-[300px] flex items-center justify-center"
+            ></div>
         </div>
     );
 }
