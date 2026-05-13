@@ -48,7 +48,7 @@ function ControlsPanel({ config, setConfig }) {
     };
 
     return (
-        <div className="w-[380px]">
+        <div className="w-full lg:w-2/5 ">
 
             {/* ENTER CONTENT */}
             <Accordion
@@ -139,14 +139,23 @@ function ControlsPanel({ config, setConfig }) {
                     )
                 }
             >
+            {
+                config.logo ? (
+                        <img src={config.logo} alt="Logo" className="w-20 h-auto" />
+                ): <div className="w-20 h-20 border-2 border-dashed border-gray-300 rounded-lg flex justify-center items-center">No Logo</div>
+            }
 
-                <input
+              
+                    <input
                     ref={fileInputRef}
                     type="file"
+                    id='logo-upload'
                     accept="image/*"
                     onChange={handleLogoUpload}
-                    className="w-full"
+                    className="hidden"
                 />
+                <div className="flex mt-5 gap-2">
+                    <label htmlFor="logo-upload" className="bg-green-700 py-1.5 px-3  rounded text-white">Upload File</label>
 
                 {
                     config.logo && (
@@ -161,12 +170,13 @@ function ControlsPanel({ config, setConfig }) {
                                 fileInputRef.current.value = "";
 
                             }}
-                            className="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition"
+                            className="bg-red-500 text-white py-1.5 px-3 rounded-lg hover:bg-red-600 transition"
                         >
                             Remove Logo
                         </button>
                     )
                 }
+                </div>
 
             </Accordion>
 
